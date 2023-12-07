@@ -1,0 +1,34 @@
+{
+    "name": "made-foryou/filament-news-package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Menno Tempelaar",
+            "email": "menno@made-foryou.nl",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "MadeForYou\\News\\": "src/",
+            "MadeForYou\\News\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MadeForYou\\News\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "spatie/laravel-package-tools": "^1.16"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MadeForYou\\News\\NewsServiceProvider"
+            ]
+        }
+    }
+}

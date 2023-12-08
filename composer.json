@@ -1,5 +1,5 @@
 {
-    "name": "made-foryou/filament-news-package",
+    "name": "made-foryou/filament-news",
     "license": "MIT",
     "authors": [
         {
@@ -8,7 +8,7 @@
             "role": "Developer"
         }
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {

@@ -22,13 +22,27 @@
         }
     },
     "require": {
-        "spatie/laravel-package-tools": "^1.16"
+        "php": "~8.0",
+        "spatie/laravel-package-tools": "^1.16",
+        "filament/filament": "^3.1",
+        "livewire/livewire": "^3.2"
     },
     "extra": {
         "laravel": {
             "providers": [
                 "MadeForYou\\News\\NewsServiceProvider"
             ]
+        }
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "pestphp/pest": "^2.28",
+        "orchestra/testbench": "^8.17",
+        "pestphp/pest-plugin-laravel": "^2.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
         }
     }
 }

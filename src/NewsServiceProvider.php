@@ -2,14 +2,24 @@
 
 namespace MadeForYou\News;
 
+use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class NewsServiceProvider extends PackageServiceProvider
 {
+    public static string $name = 'filament-news';
+
     public function configurePackage(Package $package): void
     {
-        $package->name('filament-news')
-            ->hasMigrations();
+        $package->name(self::$name)
+            ->hasMigrations()
+            ->runsMigrations()
+            ->hasInstallCommand(function (InstallCommand $command) {
+                $command->startWith(function (InstallCommand $command) {
+                    $command->info('Let\'s install the package');
+                })
+                    ->publishMigrations();
+            });
     }
 }

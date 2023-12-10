@@ -20,7 +20,7 @@ class NewsServiceProvider extends PackageServiceProvider
                 $command->startWith(function (InstallCommand $command) {
                     $command->info('Let\'s install the package');
                 })
-                    ->publishMigrations();
+                    ->publishConfigFile();
             });
     }
 }

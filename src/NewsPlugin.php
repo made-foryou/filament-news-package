@@ -2,8 +2,8 @@
 
 namespace MadeForYou\News;
 
-use Filament\Panel;
 use Filament\Contracts\Plugin;
+use Filament\Panel;
 
 class NewsPlugin implements Plugin
 {
@@ -25,5 +25,5 @@ class NewsPlugin implements Plugin
     public function boot(Panel $panel): void
     {
         //
-    }   
+    }
 }

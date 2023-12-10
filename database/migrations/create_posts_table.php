@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('content');
 
             $table->foreignId('category_id')
+                ->nullable()
                 ->references('id')
                 ->on($categories_table_name)
                 ->nullOnDelete();

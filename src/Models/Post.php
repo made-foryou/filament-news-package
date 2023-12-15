@@ -34,6 +34,18 @@ class Post extends Model
     protected $table = 'posts';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<string>
+     */
+    protected $fillable = [
+        'title',
+        'date',
+        'summary',
+        'content',
+    ];
+
+    /**
      * Get the table associated with the model.
      *
      * @return string

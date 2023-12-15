@@ -33,8 +33,10 @@ class Post extends Model
 
     /**
      * Get the table associated with the model.
+     *
+     * @return string
      */
-    public function getTable(): string
+    public function getTable()
     {
         $prefix = config('filament-news.database.prefix');
 

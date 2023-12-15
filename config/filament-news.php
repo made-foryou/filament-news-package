@@ -2,10 +2,13 @@
 
 return [
 
-    'database_prefix' => 'made',
+    'use_categories' => true,
 
-    'posts_table_name' => 'posts',
+    'database' => [
 
-    'categories_table_name' => 'categories',
+        'prefix' => 'made',
+
+        'posts_table' => 'posts',
+    ]
 
 ];

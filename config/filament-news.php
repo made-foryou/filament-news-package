@@ -2,7 +2,7 @@
 
 return [
 
-    'use_categories' => true,
+    'use_categories' => false,
 
     'database' => [
 

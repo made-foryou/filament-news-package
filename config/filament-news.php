@@ -8,7 +8,6 @@ return [
 
         'prefix' => 'made',
 
-        'posts_table' => 'posts',
-    ]
+    ],
 
 ];

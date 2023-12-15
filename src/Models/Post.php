@@ -28,8 +28,10 @@ class Post extends Model
 
     /**
      * The table associated with the model.
+     *
+     * @var string
      */
-    protected string $table = 'posts';
+    protected $table = 'posts';
 
     /**
      * Get the table associated with the model.

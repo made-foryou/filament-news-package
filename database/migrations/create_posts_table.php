@@ -16,10 +16,14 @@ return new class extends Migration
 
             $table->string('title');
 
-            $table->date('date');
+            $table->date('date')
+                ->nullable();
 
-            $table->text('summary');
-            $table->text('content');
+            $table->text('summary')
+                ->nullable();
+
+            $table->text('content')
+                ->nullable();
 
             $table->timestamps();
             $table->softDeletes();

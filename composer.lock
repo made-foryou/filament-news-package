@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6e7731f45b25c349a4848b3898b08d1",
+    "content-hash": "5bbd3d80866187577624692f1f476003",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -2858,6 +2858,58 @@
                 }
             ],
             "time": "2023-12-04T21:20:19+00:00"
+        },
+        {
+            "name": "made-foryou/filament-categories",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./../filament-categories-package",
+                "reference": "e5affe9d94cbb1d5c932337ec938db47f90f876f"
+            },
+            "require": {
+                "filament/filament": "^3.1",
+                "livewire/livewire": "^3.2",
+                "php": "~8.0",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.13",
+                "orchestra/testbench": "^8.17",
+                "pestphp/pest": "^2.28",
+                "pestphp/pest-plugin-laravel": "^2.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MadeForYou\\Categories\\CategoriesServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MadeForYou\\Categories\\": "src/",
+                    "MadeForYou\\Categories\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "MadeForYou\\Categories\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Menno Tempelaar",
+                    "email": "menno@made-foryou.nl"
+                }
+            ],
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "masterminds/html5",

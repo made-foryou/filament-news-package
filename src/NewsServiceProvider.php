@@ -13,13 +13,14 @@ class NewsServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name(self::$name)
-            ->hasMigrations()
+            ->hasConfigFile()
+            ->hasMigrations(['create_posts_table'])
             ->runsMigrations()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command->startWith(function (InstallCommand $command) {
                     $command->info('Let\'s install the package');
                 })
-                    ->publishMigrations();
+                    ->publishConfigFile();
             });
     }
 }

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/Users/mennotempelaar/Documents/git/made-foryou/filament-news-package/phpunit.xml.dist" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.082759">
-    <testsuite name="Made Test Suite" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.082759">
-      <testsuite name="P\Tests\ExampleTest" file="/Users/mennotempelaar/Documents/git/made-foryou/filament-news-package/vendor/pestphp/pest/src/Factories/TestCaseFactory.php(196) : eval()'d code" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.082759">
-        <testcase name="__pest_evaluable_it_can_test" file="/Users/mennotempelaar/Documents/git/made-foryou/filament-news-package/vendor/pestphp/pest/src/Factories/TestCaseFactory.php(196) : eval()'d code" line="22" class="P\Tests\ExampleTest" classname="P.Tests.ExampleTest" assertions="1" time="0.082759"/>
+  <testsuite name="/Users/mennotempelaar/Documents/Projects/made-foryou/filament-news-package/phpunit.xml.dist" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.174674">
+    <testsuite name="Made Test Suite" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.174674">
+      <testsuite name="P\Tests\Unit\PostTest" file="/Users/mennotempelaar/Documents/Projects/made-foryou/filament-news-package/vendor/pestphp/pest/src/Factories/TestCaseFactory.php(196) : eval()'d code" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.167432">
+        <testcase name="__pest_evaluable_it_can_be_inserted_into_the_database" file="/Users/mennotempelaar/Documents/Projects/made-foryou/filament-news-package/vendor/pestphp/pest/src/Factories/TestCaseFactory.php(196) : eval()'d code" line="22" class="P\Tests\Unit\PostTest" classname="P.Tests.Unit.PostTest" assertions="1" time="0.167432"/>
+      </testsuite>
+      <testsuite name="P\Tests\Unit\ConfigTest" file="/Users/mennotempelaar/Documents/Projects/made-foryou/filament-news-package/vendor/pestphp/pest/src/Factories/TestCaseFactory.php(196) : eval()'d code" tests="1" assertions="1" errors="0" failures="0" skipped="0" time="0.007242">
+        <testcase name="__pest_evaluable_it_contains_a_database_prefix_value" file="/Users/mennotempelaar/Documents/Projects/made-foryou/filament-news-package/vendor/pestphp/pest/src/Factories/TestCaseFactory.php(196) : eval()'d code" line="22" class="P\Tests\Unit\ConfigTest" classname="P.Tests.Unit.ConfigTest" assertions="1" time="0.007242"/>
       </testsuite>
     </testsuite>
   </testsuite>

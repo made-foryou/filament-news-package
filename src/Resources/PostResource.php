@@ -2,11 +2,8 @@
 
 namespace MadeForYou\News\Resources;
 
-use Filament\Actions\DeleteAction;
-use Filament\Actions\EditAction;
-use Filament\Actions\ForceDeleteAction;
-use Filament\Actions\RestoreAction;
-use Filament\Actions\ViewAction;
+use Filament\Forms\Components\Builder as FormsBuilder;
+use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -19,9 +16,14 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ForceDeleteAction;
 use Filament\Tables\Actions\ForceDeleteBulkAction;
+use Filament\Tables\Actions\RestoreAction;
 use Filament\Tables\Actions\RestoreBulkAction;
+use Filament\Tables\Actions\ViewAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
@@ -31,6 +33,7 @@ use MadeForYou\News\Models\Post;
 use MadeForYou\News\Resources\PostResource\CreatePost;
 use MadeForYou\News\Resources\PostResource\EditPost;
 use MadeForYou\News\Resources\PostResource\ListPosts;
+use MadeForYou\News\Resources\PostResource\ViewPost;
 
 class PostResource extends Resource
 {
@@ -72,8 +75,6 @@ class PostResource extends Resource
                     DatePicker::make('date')
                         ->label('Datum')
                         ->nullable()
-                        ->maxLength(255)
-                        ->string()
                         ->format('d-m-Y'),
 
                     Textarea::make('summary')
@@ -81,7 +82,15 @@ class PostResource extends Resource
                         ->nullable()
                         ->string(),
 
-                    // @todo content toevoegen
+                    FormsBuilder::make('content')
+                        ->label('Inhoud')
+                        ->blocks([
+                            Block::make('Hero')
+                                ->schema([
+                                    TextInput::make('title')
+                                        ->label('Titel'),
+                                ]),
+                        ]),
                 ]),
         ]);
     }
@@ -171,7 +180,7 @@ class PostResource extends Resource
             'index' => ListPosts::route('/'),
             'create' => CreatePost::route('/create'),
             'edit' => EditPost::route('/{record}/edit'),
-
+            'view' => ViewPost::route('/{record}'),
         ];
     }
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use MadeForYou\Categories\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use MadeForYou\Categories\Models\WithCategories;
 
 /**
@@ -25,6 +26,7 @@ use MadeForYou\Categories\Models\WithCategories;
 class Post extends Model
 {
     use WithCategories;
+    use SoftDeletes;
 
     /**
      * The table associated with the model.
@@ -43,6 +45,17 @@ class Post extends Model
         'date',
         'summary',
         'content',
+    ];
+
+    /**
+     * Casting settings for the properties of this model.
+     */
+    protected $casts = [
+        'date' => 'date',
+        'content' => 'array',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'deleted_at' => 'datetime',
     ];
 
     /**

@@ -4,6 +4,7 @@ namespace MadeForYou\News;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
+use MadeForYou\News\Resources\PostResource;
 
 class NewsPlugin implements Plugin
 {
@@ -19,7 +20,9 @@ class NewsPlugin implements Plugin
 
     public function register(Panel $panel): void
     {
-        //
+        $panel->resources([
+            PostResource::class,
+        ]);
     }
 
     public function boot(Panel $panel): void

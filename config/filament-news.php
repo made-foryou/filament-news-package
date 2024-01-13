@@ -11,7 +11,7 @@ return [
      *
      * @var bool
      */
-    'use_main_category' => true,
+    'use_main_category' => env('MADE_NEWS_MAIN_CATEGORY', true),
 
     /**
      * ## Categories
@@ -22,7 +22,7 @@ return [
      *
      * @var bool
      */
-    'use_categories' => true,
+    'use_categories' => env('MADE_NEWS_CATEGORIES', true),
 
     /**
      * ## Database
@@ -38,7 +38,7 @@ return [
          *
          * @var string
          */
-        'prefix' => 'made',
+        'prefix' => env('MADE_NEWS_DATABASE_PREFIX', 'made'),
 
     ],
 

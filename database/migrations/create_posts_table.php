@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use MadeForYou\Helpers\Facades\Packages;
 
 return new class extends Migration
 {
@@ -11,22 +12,36 @@ return new class extends Migration
         $prefix = config('filament-news.database.prefix');
         $table_name = $prefix . '_posts';
 
-        Schema::create($table_name, function (Blueprint $table) {
-            $table->id();
+        Schema::create(
+            $table_name,
+            function (Blueprint $table) use ($prefix) {
+                $table->id();
 
-            $table->string('title');
+                if (config('filament-news.use_main_category', true)
+                    && Packages::uses('category')
+                ) {
+                    $table->unsignedBigInteger('category_id');
 
-            $table->date('date')
-                ->nullable();
+                    $table->foreign('category_id')
+                        ->references('id')
+                        ->on($prefix . '_categories')
+                        ->cascadeOnDelete();
+                }
 
-            $table->text('summary')
-                ->nullable();
+                $table->string('title');
 
-            $table->text('content')
-                ->nullable();
+                $table->date('date')
+                    ->nullable();
 
-            $table->timestamps();
-            $table->softDeletes();
-        });
+                $table->text('summary')
+                    ->nullable();
+
+                $table->text('content')
+                    ->nullable();
+
+                $table->timestamps();
+                $table->softDeletes();
+            }
+        );
     }
 };

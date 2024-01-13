@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bbd3d80866187577624692f1f476003",
+    "content-hash": "82d66d308ab2869b4b865a099216ca5e",
     "packages": [
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -2865,7 +2865,7 @@
             "dist": {
                 "type": "path",
                 "url": "./../filament-categories-package",
-                "reference": "e5affe9d94cbb1d5c932337ec938db47f90f876f"
+                "reference": "509c7fd003a09abc41ad534e4d36b304bef66fe4"
             },
             "require": {
                 "filament/filament": "^3.1",
@@ -2883,7 +2883,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "MadeForYou\\Categories\\CategoriesServiceProvider"
+                        "MadeForYou\\Categories\\FilamentCategoriesServiceProvider"
                     ]
                 }
             },
@@ -2904,9 +2904,57 @@
             "authors": [
                 {
                     "name": "Menno Tempelaar",
-                    "email": "menno@made-foryou.nl"
+                    "email": "menno@made-foryou.nl",
+                    "role": "dev"
                 }
             ],
+            "transport-options": {
+                "relative": true
+            }
+        },
+        {
+            "name": "made-foryou/filament-helpers",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "./../filament-helpers",
+                "reference": "4f60cfbb3e8e3b9df84e54f15fcd26617046e17f"
+            },
+            "require": {
+                "php": "~8.0",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.13",
+                "orchestra/testbench": "^8.20"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MadeForYou\\Helpers\\HelpersServiceProvider"
+                    ],
+                    "aliases": {
+                        "Packages": "MadeForYou\\Helpers\\Facades\\Packages"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MadeForYou\\Helpers\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Menno Tempelaar",
+                    "email": "menno@made-foryou.nl",
+                    "role": "development"
+                }
+            ],
+            "description": "Helpers for the development of projects with the filament packages.",
             "transport-options": {
                 "relative": true
             }
@@ -11295,7 +11343,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "made-foryou/filament-categories": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

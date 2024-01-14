@@ -70,11 +70,10 @@ class Post extends Model
      */
     public function category(): BelongsTo
     {
-        if (config('filament-news.use_main_category')
-            && Packages::uses('category')) {
+        if (!config('filament-news.use_main_category')) {
             throw new NoMainCategory(
                 'The project does not use a main category or the '
-                    + 'categories package is not loaded.'
+                    . 'categories package is not loaded.'
             );
         }
 

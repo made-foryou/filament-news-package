@@ -66,10 +66,19 @@ class PostResource extends Resource
                         ->maxLength(255)
                         ->string(),
 
+                    Select::make('category_id')
+                        ->label('Hoofdcategorie')
+                        ->helperText('Dit is de hoofd categorie van dit '
+                            . 'bericht. Aan de hand van deze categorie '
+                            . 'wordt de url ook gegenereerd.')
+                        ->nullable()
+                        ->relationship(name: 'category', titleAttribute: 'name'),
+
                     Select::make('categories')
-                        ->label('Categorie')
+                        ->label('Categorieën')
                         ->helperText('Categorieën waar dit bericht bij hoort.')
                         ->multiple()
+                        ->preload()
                         ->relationship(name: 'categories', titleAttribute: 'name'),
 
                     DatePicker::make('date')
@@ -84,6 +93,23 @@ class PostResource extends Resource
 
                     FormsBuilder::make('content')
                         ->label('Inhoud')
+                        ->blocks([
+                            Block::make('Hero')
+                                ->schema([
+                                    TextInput::make('title')
+                                        ->label('Titel'),
+                                ]),
+                        ]),
+                ]),
+
+            Section::make('Inhoud')
+                ->description('Pagina inhoud van het bericht')
+                ->columns([
+                    'sm' => 1
+                ])
+                ->collapsible()
+                ->schema([
+                    FormsBuilder::make('Inhoudsstroken')
                         ->blocks([
                             Block::make('Hero')
                                 ->schema([

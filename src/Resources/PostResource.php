@@ -165,16 +165,29 @@ class PostResource extends Resource
                 ->schema([
                     InfolistSection::make('Bericht')
                         ->description('Algemene informatie van het bericht')
+                        ->aside()
                         ->schema([
-                            TextEntry::make('title')
-                                ->label('Titel'),
+                            Grid::make(2)
+                                ->schema([
+                                    TextEntry::make('title')
+                                        ->label('Titel'),
 
-                            TextEntry::make('date')
-                                ->label('Datum')
-                                ->date('d-m-Y'),
+                                    TextEntry::make('category.name')
+                                        ->label('Hoofdcategorie')
+                                        ->hidden(! config('filament-news.use_main_category')),
 
-                            TextEntry::make('summary')
-                                ->label('Korte introductie / samenvatting'),
+                                    TextEntry::make('categories.name')
+                                        ->listWithLineBreaks()
+                                        ->label('Categorieën')
+                                        ->hidden(! config('filament-news.use_categories')),
+
+                                    TextEntry::make('date')
+                                        ->label('Datum')
+                                        ->date('d-m-Y'),
+
+                                    TextEntry::make('summary')
+                                        ->label('Korte introductie / samenvatting'),
+                                ]),
                         ]),
 
                     InfolistSection::make('Administratie')

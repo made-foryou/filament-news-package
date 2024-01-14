@@ -127,13 +127,15 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-
-
                 TextColumn::make('title')
                     ->label('Titel'),
 
                 TextColumn::make('date')
                     ->label('Datum'),
+
+                TextColumn::make('category.name')
+                    ->label('Hoofdcategorie')
+                    ->hidden(! config('filament-news.use_main_category')),
             ])
             ->filters([
                 TrashedFilter::make(),

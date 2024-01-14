@@ -2,18 +2,23 @@
 
 namespace MadeForYou\News\Models;
 
+use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use MadeForYou\Categories\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use MadeForYou\Categories\Models\WithCategories;
+use MadeForYou\Helpers\Facades\Packages;
+use MadeForYou\News\Exceptions\NoMainCategory;
 
 /**
  * ## Post model
  * ---
  *
  * @property-read int $id
+ * @property int|null $category_id
  * @property string $title
  * @property Carbon $date
  * @property string $summary
@@ -21,6 +26,8 @@ use MadeForYou\Categories\Models\WithCategories;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property ?Carbon $deleted_at
+ *
+ * @property-read Category|null $category
  * @property-read Collection<Category> $categories
  */
 class Post extends Model
@@ -57,6 +64,22 @@ class Post extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
+
+    /**
+     * Retrieves and returns the main category of the message.
+     */
+    public function category(): BelongsTo
+    {
+        if (config('filament-news.use_main_category')
+            && Packages::uses('category')) {
+            throw new NoMainCategory(
+                'The project does not use a main category or the '
+                    + 'categories package is not loaded.'
+            );
+        }
+
+        return $this->belongsTo(Category::class, 'category_id');
+    }
 
     /**
      * Get the table associated with the model.

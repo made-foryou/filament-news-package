@@ -17,10 +17,9 @@ return new class extends Migration
             function (Blueprint $table) use ($prefix) {
                 $table->id();
 
-                if (config('filament-news.use_main_category', true)
-                    && Packages::uses('category')
-                ) {
-                    $table->unsignedBigInteger('category_id');
+                if (config('filament-news.use_main_category', true)) {
+                    $table->unsignedBigInteger('category_id')
+                        ->nullable();
 
                     $table->foreign('category_id')
                         ->references('id')

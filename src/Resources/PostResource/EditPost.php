@@ -15,12 +15,13 @@ class EditPost extends EditRecord
      */
     protected static string $resource = PostResource::class;
 
+
     protected function getHeaderActions(): array
     {
         return [
-            DeleteAction::class,
-            ForceDeleteAction::class,
-            RestoreAction::class,
+            DeleteAction::make(),
+            ForceDeleteAction::make(),
+            RestoreAction::make(),
         ];
     }
 }

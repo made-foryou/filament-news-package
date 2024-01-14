@@ -72,6 +72,7 @@ class PostResource extends Resource
                             . 'bericht. Aan de hand van deze categorie '
                             . 'wordt de url ook gegenereerd.')
                         ->nullable()
+                        ->hidden(! config('filament-news.use_main_category'))
                         ->relationship(name: 'category', titleAttribute: 'name'),
 
                     Select::make('categories')
@@ -79,6 +80,7 @@ class PostResource extends Resource
                         ->helperText('Categorieën waar dit bericht bij hoort.')
                         ->multiple()
                         ->preload()
+                        ->hidden(! config('filament-news.use_categories'))
                         ->relationship(name: 'categories', titleAttribute: 'name'),
 
                     DatePicker::make('date')
@@ -125,6 +127,8 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
+
+
                 TextColumn::make('title')
                     ->label('Titel'),
 

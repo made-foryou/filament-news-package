@@ -2,7 +2,6 @@
 
 namespace MadeForYou\News\Models;
 
-use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use MadeForYou\Categories\Models\Category;
@@ -10,7 +9,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use MadeForYou\Categories\Models\WithCategories;
-use MadeForYou\Helpers\Facades\Packages;
 use MadeForYou\News\Exceptions\NoMainCategory;
 
 /**

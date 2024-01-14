@@ -2,12 +2,12 @@
 
 namespace MadeForYou\News\Models;
 
-use Illuminate\Support\Carbon;
-use Illuminate\Database\Eloquent\Model;
-use MadeForYou\Categories\Models\Category;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Carbon;
+use MadeForYou\Categories\Models\Category;
 use MadeForYou\Categories\Models\WithCategories;
 use MadeForYou\News\Exceptions\NoMainCategory;
 
@@ -24,14 +24,13 @@ use MadeForYou\News\Exceptions\NoMainCategory;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property ?Carbon $deleted_at
- *
  * @property-read Category|null $category
  * @property-read Collection<Category> $categories
  */
 class Post extends Model
 {
-    use WithCategories;
     use SoftDeletes;
+    use WithCategories;
 
     /**
      * The table associated with the model.
@@ -69,7 +68,7 @@ class Post extends Model
      */
     public function category(): BelongsTo
     {
-        if (!config('filament-news.use_main_category')) {
+        if (! config('filament-news.use_main_category')) {
             throw new NoMainCategory(
                 'The project does not use a main category or the '
                     . 'categories package is not loaded.'

@@ -57,7 +57,7 @@ class PostResource extends Resource
                 ->description('Algemene informatie van het bericht')
                 ->aside()
                 ->columns([
-                    'sm' => 1
+                    'sm' => 1,
                 ])
                 ->schema([
                     TextInput::make('title')
@@ -107,7 +107,7 @@ class PostResource extends Resource
             Section::make('Inhoud')
                 ->description('Pagina inhoud van het bericht')
                 ->columns([
-                    'sm' => 1
+                    'sm' => 1,
                 ])
                 ->collapsible()
                 ->schema([
@@ -197,7 +197,7 @@ class PostResource extends Resource
                                 ->label('Verwijderd op')
                                 ->dateTime(),
                         ]),
-                ])
+                ]),
         ]);
     }
 
@@ -243,5 +243,4 @@ class PostResource extends Resource
     {
         return 'Blog';
     }
-
 }

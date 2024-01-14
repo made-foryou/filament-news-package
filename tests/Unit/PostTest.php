@@ -25,7 +25,7 @@ it('can have a main category', function () {
     $category->save();
 
     $post = new Post([
-        'title' => 'test'
+        'title' => 'test',
     ]);
 
     $post->category()->associate($category);

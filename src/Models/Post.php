@@ -48,6 +48,7 @@ class Post extends Model
      * @var array<string>
      */
     protected $fillable = [
+        'category_id',
         'title',
         'date',
         'summary',
@@ -89,6 +90,6 @@ class Post extends Model
     {
         $prefix = config('filament-news.database.prefix');
 
-        return $prefix . '_' . parent::getTable();
+        return $prefix . '_posts';
     }
 }

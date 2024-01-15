@@ -7,6 +7,7 @@ use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -92,6 +93,11 @@ class PostResource extends Resource
                         ->label('Korte introductie / samenvatting')
                         ->nullable()
                         ->string(),
+
+                    SpatieMediaLibraryFileUpload::make('poster')
+                        ->label('Poster afbeelding')
+                        ->helperText('Afbeelding die in het overzicht wordt gebruikt van de nieuwsberichten.')
+                        ->responsiveImages(),
 
                     FormsBuilder::make('content')
                         ->label('Inhoud')

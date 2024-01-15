@@ -10,6 +10,10 @@ use Illuminate\Support\Carbon;
 use MadeForYou\Categories\Models\Category;
 use MadeForYou\Categories\Models\WithCategories;
 use MadeForYou\News\Exceptions\NoMainCategory;
+use Spatie\Image\Enums\Fit;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
  * ## Post model
@@ -27,10 +31,11 @@ use MadeForYou\News\Exceptions\NoMainCategory;
  * @property-read Category|null $category
  * @property-read Collection<Category> $categories
  */
-class Post extends Model
+class Post extends Model implements HasMedia
 {
     use SoftDeletes;
     use WithCategories;
+    use InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -76,6 +81,26 @@ class Post extends Model
         }
 
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    /**
+     * Registers the media collections which the post uses.
+     */
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('poster')
+            ->singleFile()
+            ->withResponsiveImages();
+    }
+
+    /**
+     * Registers conversions.
+     */
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('preview')
+            ->fit(Fit::Contain, 300, 300)
+            ->nonQueued();
     }
 
     /**

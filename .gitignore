@@ -1,1 +1,9 @@
+# Composer
 /vendor/
+
+# PHPunit / Pest
+build
+
+# Editors
+.idea
+.vscode

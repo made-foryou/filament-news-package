@@ -33,9 +33,9 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  */
 class Post extends Model implements HasMedia
 {
+    use InteractsWithMedia;
     use SoftDeletes;
     use WithCategories;
-    use InteractsWithMedia;
 
     /**
      * The table associated with the model.
@@ -105,10 +105,8 @@ class Post extends Model implements HasMedia
 
     /**
      * Get the table associated with the model.
-     *
-     * @return string
      */
-    public function getTable()
+    public function getTable(): string
     {
         $prefix = config('filament-news.database.prefix');
 

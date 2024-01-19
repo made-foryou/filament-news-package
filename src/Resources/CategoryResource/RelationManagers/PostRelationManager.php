@@ -23,18 +23,18 @@ class PostRelationManager extends RelationManager
 {
     /**
      * The defined relationship on the model.
-     *
-     * @var string $relationship
      */
     protected static string $relationship = 'posts';
+
+    protected static ?string $title = 'Nieuwsberichten';
 
     /**
      * Generates a table with specific settings and components.
      *
      * @param  Table  $table  The table object to configure.
+     * @return Table The configured table object.
      *
      * @throws Exception
-     * @return Table The configured table object.
      */
     public function table(Table $table): Table
     {

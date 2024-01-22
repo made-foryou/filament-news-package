@@ -29,6 +29,10 @@
         {
             "type": "path",
             "url": "./../filament-helpers"
+        },
+        {
+            "type": "path",
+            "url": "./../filament-content"
         }
     ],
     "require": {
@@ -38,7 +42,8 @@
         "livewire/livewire": "^3.2",
         "made-foryou/filament-categories": "dev-main",
         "made-foryou/filament-helpers": "dev-main",
-        "filament/spatie-laravel-media-library-plugin": "^3.1"
+        "filament/spatie-laravel-media-library-plugin": "^3.1",
+        "made-foryou/filament-content": "dev-main"
     },
     "require-dev": {
         "laravel/pint": "^1.13",

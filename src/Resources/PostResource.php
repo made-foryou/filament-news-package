@@ -3,6 +3,7 @@
 namespace MadeForYou\News\Resources;
 
 use Exception;
+use MadeForYou\FilamentContent\Facades\Content;
 use Filament\Forms\Components\Builder as FormsBuilder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\DatePicker;
@@ -113,16 +114,6 @@ class PostResource extends Resource
                         ->label(label: 'Poster afbeelding')
                         ->helperText(text: 'Afbeelding die in het overzicht wordt gebruikt van de nieuwsberichten.')
                         ->responsiveImages(),
-
-                    FormsBuilder::make(name: 'content')
-                        ->label(label: 'Inhoud')
-                        ->blocks(blocks: [
-                            Block::make(name: 'Hero')
-                                ->schema(components: [
-                                    TextInput::make(name: 'title')
-                                        ->label(label: 'Titel'),
-                                ]),
-                        ]),
                 ]),
 
             Section::make(heading: 'Inhoud')
@@ -132,14 +123,8 @@ class PostResource extends Resource
                 ])
                 ->collapsible()
                 ->schema(components: [
-                    FormsBuilder::make(name: 'Inhoudsstroken')
-                        ->blocks(blocks: [
-                            Block::make(name: 'Hero')
-                                ->schema(components: [
-                                    TextInput::make(name: 'title')
-                                        ->label(label: 'Titel'),
-                                ]),
-                        ]),
+                    FormsBuilder::make(name: 'Inhoudsdelen')
+                        ->blocks(blocks: Content::blocks()),
                 ]),
         ]);
     }

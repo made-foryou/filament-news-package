@@ -3,7 +3,6 @@
 namespace MadeForYou\News\Resources;
 
 use Exception;
-use MadeForYou\FilamentContent\Facades\Content;
 use Filament\Forms\Components\Builder as FormsBuilder;
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\DatePicker;
@@ -33,6 +32,7 @@ use Filament\Tables\Filters\TrashedFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use MadeForYou\FilamentContent\Facades\Content;
 use MadeForYou\News\Models\Post;
 use MadeForYou\News\Resources\PostResource\CreatePost;
 use MadeForYou\News\Resources\PostResource\EditPost;
@@ -123,8 +123,11 @@ class PostResource extends Resource
                 ])
                 ->collapsible()
                 ->schema(components: [
-                    FormsBuilder::make(name: 'Inhoudsdelen')
-                        ->blocks(blocks: Content::blocks()),
+                    FormsBuilder::make(name: 'content')
+                        ->label('')
+                        ->blocks(self::getContentBlocks())
+                        ->reorderable()
+                        ->collapsible(),
                 ]),
         ]);
     }
@@ -276,6 +279,16 @@ class PostResource extends Resource
             ->withoutGlobalScopes([
                 SoftDeletingScope::class,
             ]);
+    }
+
+    /**
+     * Gathers the content block components from the configuration.
+     */
+    public static function getContentBlocks(): array
+    {
+        return collect(config('filament-news.content_blocks'))
+            ->map(fn (string $block) => (new $block)->getBlock())
+            ->toArray();
     }
 
     /**

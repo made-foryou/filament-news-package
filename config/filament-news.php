@@ -1,5 +1,8 @@
 <?php
 
+use MadeForYou\News\Blocks\HeroBlock;
+use MadeForYou\Helpers\Contracts\ContentBlock;
+
 return [
 
     /**
@@ -23,6 +26,16 @@ return [
      * @var bool
      */
     'use_categories' => env('MADE_NEWS_CATEGORIES', true),
+
+    /**
+     * A list of ContentBlock objects which define which Block components will be added
+     * to the content FormBuilder of the news posts.
+     *
+     * @param array<ContentBlock>
+     */
+    'content_blocks' => [
+        // Add your configured content blocks.
+    ],
 
     /**
      * ## Database

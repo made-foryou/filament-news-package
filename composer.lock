@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78c28f5c35c0684811860dab3023fe93",
+    "content-hash": "b9c2251d58be3462518e9f9d4038a47c",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3024,51 +3024,12 @@
             }
         },
         {
-            "name": "made-foryou/filament-content",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "./../filament-content",
-                "reference": "d5c0d01a8e8b6717e4f7a3b240cfaf5f503b6558"
-            },
-            "require": {
-                "filament/filament": "^3.2",
-                "php": "~8.2",
-                "spatie/laravel-package-tools": "^1.16"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.13",
-                "orchestra/testbench": "^8.17",
-                "pestphp/pest": "^2.32",
-                "pestphp/pest-plugin-laravel": "^2.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MadeForyou\\FilamentContent\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Menno Tempelaar",
-                    "email": "menno@made-foryou.nl"
-                }
-            ],
-            "description": "This package includes the default content setup which consists of filament fields for selecting the content and a default view file which presents the content.",
-            "transport-options": {
-                "relative": true
-            }
-        },
-        {
             "name": "made-foryou/filament-helpers",
             "version": "dev-main",
             "dist": {
                 "type": "path",
                 "url": "./../filament-helpers",
-                "reference": "7ff9764352f66ed08e87061692272ff7a13cdce1"
+                "reference": "6235411cd25985f7f9c760082cc192a3215274ca"
             },
             "require": {
                 "php": "~8.0",

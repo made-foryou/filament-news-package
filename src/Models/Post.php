@@ -10,6 +10,8 @@ use Illuminate\Support\Carbon;
 use MadeForYou\Categories\Models\Category;
 use MadeForYou\Categories\Models\WithCategories;
 use MadeForYou\News\Exceptions\NoMainCategory;
+use MadeForYou\Routes\Contracts\HasRoute;
+use MadeForYou\Routes\Models\WithRoute;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -31,11 +33,12 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property-read Category|null $category
  * @property-read Collection<Category> $categories
  */
-class Post extends Model implements HasMedia
+class Post extends Model implements HasMedia, HasRoute
 {
     use InteractsWithMedia;
     use SoftDeletes;
     use WithCategories;
+    use WithRoute;
 
     /**
      * The table associated with the model.
@@ -111,5 +114,10 @@ class Post extends Model implements HasMedia
         $prefix = config('filament-news.database.prefix');
 
         return $prefix . '_posts';
+    }
+
+    public function getUrl(): string
+    {
+        return '';
     }
 }

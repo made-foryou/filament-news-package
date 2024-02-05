@@ -15,11 +15,11 @@ class NewsServiceProvider extends PackageServiceProvider
         $package->name(self::$name)
             ->hasConfigFile()
             ->hasMigrations(['0201012024_create_posts_table'])
-            ->runsMigrations()
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command->startWith(function (InstallCommand $command) {
                     $command->info('Let\'s install the package');
                 })
+                    ->publishMigrations()
                     ->publishConfigFile();
             });
     }

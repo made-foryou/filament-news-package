@@ -2,6 +2,7 @@
 
 namespace MadeForYou\News\Models;
 
+use Psy\Util\Str;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -116,8 +117,13 @@ class Post extends Model implements HasMedia, HasRoute
         return $prefix . '_posts';
     }
 
-    public function getUrl(): string
+    #[\Override] public function getUrl(): string
     {
-        return '';
+        return Str::slug($this->title);
+    }
+
+    #[\Override] public function getRouteName(): string
+    {
+        return 'news.'. $this->id;
     }
 }

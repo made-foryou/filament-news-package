@@ -17,7 +17,7 @@ class NewsServiceProvider extends PackageServiceProvider
             ->hasMigrations(['0201012024_create_posts_table'])
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command->startWith(function (InstallCommand $command) {
-                    $command->info('Let\'s install the package');
+                    $command->info('Let\'s install the news package');
                 })
                     ->publishMigrations()
                     ->publishConfigFile();

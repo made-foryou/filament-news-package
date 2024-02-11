@@ -181,7 +181,7 @@ class PostResource extends Resource
      * Defines an info list with the given parameters.
      *
      * @param  Infolist  $infolist  The info list to configure.
-     * @return Infolist  The configured info list.
+     * @return Infolist The configured info list.
      *
      * @throws Exception
      */
@@ -216,6 +216,13 @@ class PostResource extends Resource
 
                                     TextEntry::make('summary')
                                         ->label('Korte introductie / samenvatting'),
+
+                                    TextEntry::make('url')
+                                        ->label('URL')
+                                        ->html()
+                                        ->state(function (Post $record) {
+                                            return '<a href="' . url($record->getUrl()) . '">' . $record->getUrl() . '</a>';
+                                        }),
                                 ]),
                         ]),
 

@@ -120,7 +120,21 @@ class Post extends Model implements HasMedia, HasRoute
     #[\Override]
     public function getUrl(): string
     {
-        return Str::slug($this->title);
+        $segments = collect();
+
+        if (config('filament-news.use_main_category')) {
+
+            if ($this->category !== null
+                && method_exists($this->category, 'getUrl')
+            ) {
+                $segments->push($this->category->getUrl());
+            }
+
+        }
+
+        $segments->push(Str::slug($this->title));
+
+        return $segments->join('/');
     }
 
     #[\Override]

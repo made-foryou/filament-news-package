@@ -2,14 +2,16 @@
 
 namespace MadeForYou\News\Models;
 
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 use MadeForYou\Categories\Models\Category;
 use MadeForYou\Categories\Models\WithCategories;
+use MadeForYou\News\Database\Factories\PostFactory;
 use MadeForYou\News\Exceptions\NoMainCategory;
 use MadeForYou\Routes\Contracts\HasRoute;
 use MadeForYou\Routes\Models\WithRoute;
@@ -36,6 +38,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  */
 class Post extends Model implements HasMedia, HasRoute
 {
+    use HasFactory;
     use InteractsWithMedia;
     use SoftDeletes;
     use WithCategories;
@@ -74,6 +77,7 @@ class Post extends Model implements HasMedia, HasRoute
 
     /**
      * Retrieves and returns the main category of the message.
+     * @throws NoMainCategory
      */
     public function category(): BelongsTo
     {
@@ -104,7 +108,7 @@ class Post extends Model implements HasMedia, HasRoute
     {
         $this->addMediaConversion('preview')
             ->fit(Fit::Contain, 300, 300)
-            ->nonQueued();
+            ->queued();
     }
 
     /**
@@ -141,5 +145,10 @@ class Post extends Model implements HasMedia, HasRoute
     public function getRouteName(): string
     {
         return 'news.' . $this->id;
+    }
+
+    protected static function newFactory(): PostFactory
+    {
+        return PostFactory::new();
     }
 }

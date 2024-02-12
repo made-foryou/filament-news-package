@@ -3,6 +3,7 @@
 
 # PHPunit / Pest
 build
+.phpunit.cache
 
 # Editors
 .idea

@@ -147,6 +147,19 @@ class Post extends Model implements HasMedia, HasRoute
         return 'news.' . $this->id;
     }
 
+    #[\Override]
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    #[\Override]
+    public function getType(): string
+    {
+        return 'Nieuwsbericht';
+    }
+
+
     protected static function newFactory(): PostFactory
     {
         return PostFactory::new();

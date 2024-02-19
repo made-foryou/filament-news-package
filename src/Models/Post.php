@@ -2,6 +2,8 @@
 
 namespace MadeForYou\News\Models;
 
+use Filament\Facades\Filament;
+use MadeForYou\News\Resources\PostResource;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -162,7 +164,7 @@ class Post extends Model implements HasMedia, HasRoute
     #[\Override]
     public function getResourceLink(): string
     {
-        return '/posts/'. $this->id;
+        return PostResource::getUrl('view', ['record' => $this]);
     }
 
 

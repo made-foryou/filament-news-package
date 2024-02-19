@@ -159,6 +159,12 @@ class Post extends Model implements HasMedia, HasRoute
         return 'Nieuwsbericht';
     }
 
+    #[\Override]
+    public function getResourceLink(): string
+    {
+        return '/posts/'. $this->id;
+    }
+
 
     protected static function newFactory(): PostFactory
     {
